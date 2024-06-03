@@ -1,8 +1,0 @@
---- a/src/CMakeLists.txt
-+++ b/src/CMakeLists.txt
-@@ -5,4 +5,4 @@ add_subdirectory(config)
- add_subdirectory(core)
- add_subdirectory(kcm)
- add_subdirectory(kdecoration)
--add_subdirectory(kwinscript)
-+# add_subdirectory(kwinscript)

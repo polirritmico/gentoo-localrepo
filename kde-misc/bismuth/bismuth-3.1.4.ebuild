@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake xdg-utils
+inherit cmake xdg
 
 DESCRIPTION="Tiling window management script for Kwin"
 HOMEPAGE="https://github.com/Bismuth-Forge/bismuth"
@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="CC-BY-4.0 LGPL-3+ MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 QTMIN=5.15.0
 KFMIN=5.78.0
@@ -65,12 +65,4 @@ src_install() {
 
 	insinto /usr/share/kwin/scripts
 	doins -r ../share/kwin/scripts/"${PN}"
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }

@@ -30,3 +30,4 @@ src_install() {
 	doman xbanish.1
 	dodoc README.md
 }
+
