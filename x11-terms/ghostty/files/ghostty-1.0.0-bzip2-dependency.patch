@@ -1,0 +1,13 @@
+diff --git a/src/build/SharedDeps.zig b/src/build/SharedDeps.zig
+index c3f73026..09965025 100644
+--- a/src/build/SharedDeps.zig
++++ b/src/build/SharedDeps.zig
+@@ -111,7 +111,7 @@ pub fn add(
+         step.root_module.addImport("freetype", freetype_dep.module("freetype"));
+ 
+         if (b.systemIntegrationOption("freetype", .{})) {
+-            step.linkSystemLibrary2("bzip2", dynamic_link_opts);
++            step.linkSystemLibrary2("bz2", dynamic_link_opts);
+             step.linkSystemLibrary2("freetype2", dynamic_link_opts);
+         } else {
+             step.linkLibrary(freetype_dep.artifact("freetype"));

@@ -1,0 +1,25 @@
+diff --git a/src/build/GhosttyResources.zig b/src/build/GhosttyResources.zig
+index 9c5f7f80..594cb42a 100644
+--- a/src/build/GhosttyResources.zig
++++ b/src/build/GhosttyResources.zig
+@@ -57,14 +57,12 @@ pub fn init(b: *std.Build, cfg: *const Config) !GhosttyResources {
+             run_step.step.dependOn(&src_install.step);
+
+             {
+-                // Use cp -R instead of Step.InstallDir because we need to preserve
+-                // symlinks in the terminfo database. Zig's InstallDir step doesn't
+-                // handle symlinks correctly yet.
+-                const copy_step = RunStep.create(b, "copy terminfo db");
+-                copy_step.addArgs(&.{ "cp", "-R" });
+-                copy_step.addFileArg(path);
+-                copy_step.addArg(b.fmt("{s}/share", .{b.install_path}));
+-                try steps.append(&copy_step.step);
++                const install_dir_step = b.addInstallDirectory(.{
++                    .source_dir = path,
++                    .install_dir = .prefix,
++                    .install_subdir = "share/terminfo",
++                });
++                b.getInstallStep().dependOn(&install_dir_step.step);
+             }
+         }
+     }
